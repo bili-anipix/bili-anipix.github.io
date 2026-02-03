@@ -29,28 +29,34 @@ export function ImageCard({
       {/* Image Container */}
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
+          alt={image.description || image.title}
           fill
           priority={priority}
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          alt={image.description || image.title}
-          src={`${process.env.BILI_PIC_PROXY_URL}?url=${encodeURIComponent(image.src)}` || "/placeholder.svg"}
+          src={
+            `${process.env.BILI_PIC_PROXY_URL}?url=${encodeURIComponent(image.src)}` ||
+            "/placeholder.svg"
+          }
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          title={image.description || image.title}
+        />
 
         {/* Stats */}
         <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1 text-xs text-foreground/90">
+            {/* <span className="flex items-center gap-1 text-xs text-foreground/90">
               <Heart className="h-3.5 w-3.5 fill-accent text-accent" />
               {0}
             </span>
             <span className="flex items-center gap-1 text-xs text-foreground/90">
               <Eye className="h-3.5 w-3.5" />
               {0}
-            </span>
+            </span> */}
           </div>
         </div>
       </div>
@@ -58,10 +64,10 @@ export function ImageCard({
       {/* Content */}
       <div className="p-4">
         <h3 className="font-semibold text-foreground line-clamp-1 group-hover:text-primary transition-colors">
-          {image.title}
+          {/* {image.title} */}
         </h3>
         <p className="text-sm text-muted-foreground mt-1">
-          by {image.author_id}
+          UId: {image.author_id}
         </p>
 
         {/* Tags */}

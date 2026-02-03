@@ -180,7 +180,7 @@ export default async function ImageDetailPage({ params }: PageProps) {
                     Share
                   </Button>
                   <Button variant="outline" asChild>
-                    <Link href={image.src}>
+                    <Link href={`${process.env.BILI_PIC_PROXY_URL}?url=${encodeURIComponent(image.src)}`}>
                       <Download className="h-4 w-4 mr-2" />
                       Download
                     </Link>

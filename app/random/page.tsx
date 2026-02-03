@@ -215,7 +215,8 @@ export default function RandomPage() {
                   >
                     <Image
                       src={image.src || "/placeholder.svg"}
-                      alt={image.title}
+                      alt={image.description || image.title}
+                      title={image.description || image.title}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                       sizes="(max-width: 640px) 50vw, 20vw"
