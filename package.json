@@ -1,5 +1,6 @@
 {
   "name": "bili-anipix",
+  "homepage": "https://bilibili-tool.github.io/bili-anipix",
   "version": "0.1.0",
   "private": true,
   "scripts": {
