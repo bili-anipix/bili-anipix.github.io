@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, TrendingUp, Clock } from "lucide-react";
 import Link from "next/link";
 
-const ITEMS_PER_PAGE = 8;
+const ITEMS_PER_PAGE = 16;
 
 export default function HomePage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -94,11 +94,7 @@ export default function HomePage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {featuredImages.map((image, index) => (
-                <ImageCard
-                  key={image.title}
-                  image={image}
-                  priority={index === 0}
-                />
+                <ImageCard key={image.title} image={image} />
               ))}
             </div>
           </div>

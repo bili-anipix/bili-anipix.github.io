@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { animeImages, AnimeImage } from "@/lib/anime-data";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { CustomImage } from "@/components/image";
 import {
   Heart,
   Eye,
@@ -108,16 +108,11 @@ export default function RandomPage() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                 {/* Image */}
                 <div className="relative aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden bg-card border border-border group">
-                  <Image
-                    alt={currentImage.title}
-                    fill
-                    priority
+                  <CustomImage
+                    alt={currentImage.description || currentImage.title}
+                    title={currentImage.description || currentImage.title}
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    src={
-                      `${process.env.BILI_PIC_PROXY_URL}?url=${encodeURIComponent(currentImage.src)}` ||
-                      "/placeholder.svg"
-                    }
+                    src={`${currentImage.src}${process.env.NEXT_PUBLIC_DETAIL_BILI_IMG_QUALITY}`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
@@ -213,13 +208,12 @@ export default function RandomPage() {
                     href={`/image/${image.title}`}
                     className="group relative aspect-square rounded-lg overflow-hidden bg-card border border-border"
                   >
-                    <Image
-                      src={image.src || "/placeholder.svg"}
+                    <CustomImage
+                      src={`${image.src}${process.env.NEXT_PUBLIC_DETAIL_BILI_IMG_QUALITY}`}
                       alt={image.description || image.title}
                       title={image.description || image.title}
-                      fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      sizes="(max-width: 640px) 50vw, 20vw"
+                      
                     />
                     <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                       <span className="text-sm font-medium text-foreground">

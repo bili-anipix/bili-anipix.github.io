@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
+
 import Link from "next/link";
 import { getImageByTitle, animeImages } from "@/lib/anime-data";
 import { Header } from "@/components/header";
@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer";
 import { ImageCard } from "@/components/image-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { CustomImage } from "@/components/image";
 import {
   Heart,
   Eye,
@@ -81,14 +82,12 @@ export default async function ImageDetailPage({ params }: PageProps) {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
               {/* Image */}
-              <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[600px] rounded-2xl overflow-hidden bg-card border border-border">
-                <Image
+              <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[600px] rounded-2xl overflow-hidden bg-card border border-border img-container">
+                <CustomImage
                   alt={image.description || image.title}
-                  fill
-                  priority
+                  title={image.description || image.title}
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  src={`${process.env.BILI_PIC_PROXY_URL}?url=${encodeURIComponent(image.src)}` || "/placeholder.svg"}
+                  src={`${image.src}${process.env.NEXT_PUBLIC_DETAIL_BILI_IMG_QUALITY}`}
                 />
               </div>
 
@@ -180,7 +179,9 @@ export default async function ImageDetailPage({ params }: PageProps) {
                     Share
                   </Button>
                   <Button variant="outline" asChild>
-                    <Link href={`${process.env.BILI_PIC_PROXY_URL}?url=${encodeURIComponent(image.src)}`}>
+                    <Link
+                      href={`${process.env.NEXT_PUBLIC_BILI_IMG_PROXY_URL}?url=${image.src}`}
+                    >
                       <Download className="h-4 w-4 mr-2" />
                       Download
                     </Link>

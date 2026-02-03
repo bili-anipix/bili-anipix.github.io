@@ -1,21 +1,19 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { Heart, Eye } from "lucide-react";
+// import { Heart, Eye } from "lucide-react";
 import { AnimeImage } from "@/lib/anime-data";
 import { Badge } from "@/components/ui/badge";
+import {CustomImage} from "@/components/image";
 import { cn } from "@/lib/utils";
 
 interface ImageCardProps {
   image: AnimeImage;
-  priority?: boolean;
   className?: string;
 }
 
 export function ImageCard({
   image,
-  priority = false,
   className,
 }: ImageCardProps) {
   return (
@@ -28,15 +26,12 @@ export function ImageCard({
     >
       {/* Image Container */}
       <div className="relative aspect-[4/3] overflow-hidden">
-        <Image
+        <CustomImage
           alt={image.description || image.title}
-          fill
-          priority={priority}
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           src={
-            `${process.env.BILI_PIC_PROXY_URL}?url=${encodeURIComponent(image.src)}` ||
-            "/placeholder.svg"
+            `${process.env.NEXT_PUBLIC_BILI_IMG_PROXY_URL}?url=${image.src}${process.env.NEXT_PUBLIC_LIST_BILI_IMG_QUALITY}`
           }
         />
 
