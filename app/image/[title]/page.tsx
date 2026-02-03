@@ -88,7 +88,7 @@ export default async function ImageDetailPage({ params }: PageProps) {
                   priority
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  src={`/api/bili-img?url=${encodeURIComponent(image.src)}` || "/placeholder.svg"}
+                  src={`${process.env.BILI_PIC_PROXY_URL}?url=${encodeURIComponent(image.src)}` || "/placeholder.svg"}
                 />
               </div>
 
