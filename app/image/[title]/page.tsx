@@ -189,6 +189,7 @@ export default async function ImageDetailPage({ params }: PageProps) {
                   <Button variant="outline" asChild>
                     <Link
                       href={`${process.env.NEXT_PUBLIC_BILI_IMG_PROXY_URL}?url=${image.src}`}
+                      target="_blank"
                     >
                       <Download className="h-4 w-4 mr-2" />
                       Download
