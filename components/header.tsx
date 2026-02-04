@@ -23,8 +23,8 @@ export function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/20 group-hover:bg-primary/30 transition-colors">
-              <Sparkles className="h-5 w-5 text-primary" />
+            <div className="flex h-12 w-12 items-center justify-center">
+              <img className="h-12 w-12" src="/favicon.png" />
             </div>
             <span className="text-xl font-bold tracking-tight text-foreground">
               AniPix
