@@ -1,10 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "@/styles/globals.css";
-
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "AniPix - Discover Beautiful Animation Art",
@@ -27,9 +24,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
-        {children}
-      </body>
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-F72LVLBFN4"
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-F72LVLBFN4');
+          `}
+        </Script>
+      </head>
+      <body className={`font-sans antialiased`}>{children}</body>
     </html>
   );
 }
