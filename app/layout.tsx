@@ -6,7 +6,7 @@ import "@/styles/globals.css";
 export const metadata: Metadata = {
   title: "AniPix - Discover Beautiful Animation Art",
   description:
-    "Explore stunning anime-inspired artwork from talented artists around the world. Find your next favorite piece or discover something completely new.",
+    "a bilibili site for discovering beautiful animation art, including anime, manga, and illustration.",
   icons: {
     icon: [
       {
