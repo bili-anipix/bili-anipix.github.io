@@ -24,36 +24,36 @@ export function CustomImage({
   dataSize,
   dataDatetime,
 }: ImageProps) {
-  const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-
-  const resolvedSrc = `${process.env.NEXT_PUBLIC_BILI_IMG_PROXY_URL}?url=${src}`;
+  const [isLoading, setIsLoading] = useState(true);
   const fallbackSrc = "/placeholder.svg";
 
   return (
     <>
+      {isLoading && !hasError && (
+        <div className="image-loading w-full h-full flex items-center justify-center absolute inset-0 bg-muted">
+          Loading...
+        </div>
+      )}
       <img
-        src={hasError ? fallbackSrc : resolvedSrc}
+        src={hasError ? fallbackSrc : src}
         alt={alt}
         title={title || alt}
         className={className}
         loading="lazy"
         decoding="async"
+        referrerPolicy="no-referrer"
         data-id={dataId}
         data-author_id={dataAuthorId}
         data-category={dataCategory}
         data-size={dataSize}
         data-datetime={dataDatetime}
         onLoad={() => setIsLoading(false)}
-        onError={(e) => {
-          setIsLoading(false);
+        onError={() => {
           setHasError(true);
-          const img = e.currentTarget;
-          const failedSrc = img.currentSrc || img.src;
-          console.log(`Image failed to load: ${failedSrc}`);
+          setIsLoading(false);
         }}
       />
-      {isLoading && <div className="image-loading w-full h-full flex items-center justify-center">Loading...</div>}
     </>
   );
 }

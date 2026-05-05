@@ -7,6 +7,8 @@ import { ImageCard } from "@/components/image-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CustomImage } from "@/components/image";
+import { BackButton } from "@/components/back-button";
+import { DownloadButton } from "@/components/download-button";
 import {
   Heart,
   Eye,
@@ -14,7 +16,6 @@ import {
   User,
   ArrowLeft,
   Share2,
-  Download,
   Shuffle,
 } from "lucide-react";
 
@@ -45,14 +46,9 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-export default async function DetailPage({ params, searchParams }: PageProps) {
+export default async function DetailPage({ params }: PageProps) {
   const { title } = await params;
-  const from = "";
   const image = getImageByTitle(title);
-
-  // Determine the back link - decode the 'from' parameter or default to home
-  const backUrl = from || "/";
-  const isFromSearch = backUrl.startsWith("/search");
 
   if (!image) {
     notFound();
@@ -73,12 +69,7 @@ export default async function DetailPage({ params, searchParams }: PageProps) {
       <main className="flex-1 pt-16">
         {/* Back Button */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
-          <Button variant="ghost" size="sm" asChild>
-            <Link href={backUrl} className="flex items-center gap-2">
-              <ArrowLeft className="h-4 w-4" />
-              {isFromSearch ? "Back to Search" : "Back to Gallery"}
-            </Link>
-          </Button>
+          <BackButton />
         </div>
 
         {/* Image Detail */}
@@ -190,15 +181,10 @@ export default async function DetailPage({ params, searchParams }: PageProps) {
                     <Share2 className="h-4 w-4 mr-2" />
                     Share
                   </Button>
-                  <Button variant="outline" asChild>
-                    <Link
-                      href={`${process.env.NEXT_PUBLIC_BILI_IMG_PROXY_URL}?url=${image.src}`}
-                      target="_blank"
-                    >
-                      <Download className="h-4 w-4 mr-2" />
-                      Download
-                    </Link>
-                  </Button>
+                  <DownloadButton 
+                    src={image.src}
+                    filename={`${image.title}.webp`}
+                  />
                   <Button variant="outline" asChild>
                     <Link href="/random">
                       <Shuffle className="h-4 w-4 mr-2" />

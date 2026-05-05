@@ -15,7 +15,7 @@ interface ImageCardProps {
 
 export function ImageCard({ image, className, returnUrl }: ImageCardProps) {
   const href = returnUrl 
-    ? `/image/${image.title}?from=${(returnUrl)}`
+    ? `/image/${image.title}?from=${encodeURIComponent(returnUrl)}`
     : `/image/${image.title}`;
     
   return (

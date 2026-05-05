@@ -27,7 +27,7 @@ export default function HomePage() {
   const paginatedImages = animeImages.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   // Build return URL with current page
-  const returnUrl = currentPage > 1 ? `?/page=${currentPage}` : "/";
+  const returnUrl = currentPage > 1 ? `/?page=${currentPage}` : "/";
 
   const handlePageChange = (page: number) => {
     const params = new URLSearchParams();
