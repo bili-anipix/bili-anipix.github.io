@@ -64,12 +64,19 @@ jobs:
 
       # This step is optional and can be used to deploy the site to GitHub Pages
       - name: Generate sitemap
+        id: sitemap
         uses: cicirello/generate-sitemap@v1
         with:
           base-url-path: https://bili-anipix.github.io/
           exclude-paths: /out/image/*
-          sitemap-path: ./out/sitemap.xml
           robots: true
+
+      - name: git commit&push
+          if [[ `git status --porcelain` ]]; then
+            git add -A
+            git commit -m "update by github action"
+            git push origin main
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
