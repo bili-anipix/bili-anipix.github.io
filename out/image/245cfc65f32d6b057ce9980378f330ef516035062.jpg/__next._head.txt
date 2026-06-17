@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"ViewportBoundary"]
+3:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"MetadataBoundary"]
+4:"$Sreact.suspense"
+5:I[27201,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"IconMark"]
+0:{"buildId":"TEU9jlzrN8otT2NDdRsV5","rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"245cfc65f32d6b057ce9980378f330ef516035062.jpg | AniPix"}],["$","meta","1",{"name":"description","content":"【大佬这个月的B币券可否赏我[给心心]】\n【年度大会员】每月免费领取B币券\n【领取链接】https://big.bilibili.com/mobile/cardBag?from=sixin【每月都能领】\n【画师】儒宅"}],["$","meta","2",{"name":"google-site-verification","content":"nScZP2sBUKhxwKfvtKwCxQkPMCIOOvYNT35E5W2pDn8"}],["$","link","3",{"rel":"icon","href":"/favicon.png"}],["$","link","4",{"rel":"apple-touch-icon","href":"/favicon.png"}],["$","$L5","5",{}]]}]}]}],null]}],"loading":null,"isPartial":false}
