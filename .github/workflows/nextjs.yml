@@ -62,10 +62,6 @@ jobs:
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
-      - name: cd out
-        run: 
-          cd out
-
       # This step is optional and can be used to deploy the site to GitHub Pages
       - name: Generate sitemap
         id: sitemap
