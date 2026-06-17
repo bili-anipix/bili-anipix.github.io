@@ -68,11 +68,23 @@ jobs:
         uses: cicirello/generate-sitemap@v1
         with:
           base-url-path: https://bili-anipix.github.io/
-          exclude-paths: /out/image/*
+          additional-extensions: html
+          exclude-paths: /out/*
 
       - name: move sitemap.xml
         run: 
           mv sitemap.xml out/sitemap.xml
+
+      - name: commit and push
+        run: |
+          git config --local user.email "56245152+RyuSeiri@users.noreply.github.com"
+          git config --local user.name "RyuSeiri"
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          if [[ `git status --porcelain` ]]; then
+            git add -A
+            git commit -m "update by github action"
+            git push origin main
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
