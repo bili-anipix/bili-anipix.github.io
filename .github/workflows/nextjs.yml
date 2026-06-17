@@ -62,6 +62,10 @@ jobs:
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
+      - name: cd out
+        run: 
+          cd out
+
       # This step is optional and can be used to deploy the site to GitHub Pages
       - name: Generate sitemap
         id: sitemap
@@ -70,10 +74,6 @@ jobs:
           base-url-path: https://bili-anipix.github.io/
           exclude-paths: .next/* node_modules/* public/*
           additional-extensions: html
-
-      - name: move sitemap.xml
-        run: 
-          mv sitemap.xml out/sitemap.xml
 
       - name: commit and push
         run: |
