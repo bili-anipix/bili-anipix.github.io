@@ -72,8 +72,9 @@ jobs:
         uses: cicirello/generate-sitemap@v1
         with:
           base-url-path: https://bili-anipix.github.io/
+          path-to-root: out/
           exclude-paths: .next/* node_modules/* public/*
-          additional-extensions: html
+          sitemap-path: out/sitemap.xml
 
       - name: commit and push
         run: |
